@@ -141,7 +141,7 @@ document.addEventListener('keypress', (event) => {
         numberPressed(event.key);
     } else if (event.key == '.') {
         decimalPressed();
-    } else if (event.key.match(/^[-*+/]$/)) {
+    } else if (event.key.match(/^[-*+\/^]$/)) {
         operationPressed(event.key);
     } else if (event.key == '=') {
         equalPressed();
