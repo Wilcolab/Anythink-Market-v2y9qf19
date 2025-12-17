@@ -94,7 +94,32 @@ describe('Arithmetic', function () {
     });
 
 // TODO: Challenge #1
- 
+    describe('Power', function () {
+        it('calculates power with positive exponents', function (done) {
+            request.get('/arithmetic?operation=power&operand1=2&operand2=8')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 256 });
+                    done();
+                });
+        });
+        it('calculates power with fractional exponents', function (done) {
+            request.get('/arithmetic?operation=power&operand1=4&operand2=0.5')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 2 });
+                    done();
+                });
+        });
+        it('calculates power with negative exponents', function (done) {
+            request.get('/arithmetic?operation=power&operand1=2&operand2=-2')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 0.25 });
+                    done();
+                });
+        });
+    });
 
     describe('Multiplication', function () {
         it('multiplies two positive integers', function (done) {
